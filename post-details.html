@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post details</title>
+  <style>
+    .postAd{
+      border: 2px solid rgba(80, 34, 85, 0.47);
+    }
+  </style>
+</head>
+<body>
+<h1>Read me</h1>
+<div class="postAd"></div>
+
+<script>
+  //   let url = new URL(location.href);
+  //   let post = JSON.parse(url.searchParams.get('data'))
+  //   console.log(post)
+  // let postComments = document.getElementsByClassName('postAd')[0];
+  //   postComments.innerText = JSON.stringify(post)
+
+  let commentsContainer = document.getElementsByClassName('postAd')[0]
+  fetch(`https:jsonplaceholder.typicode.com/posts/${postsBlock.id}/comments`)
+      .then (value => value.json())
+      .then (value => {
+          for (const commentItem of value) {
+              let commentContainer = document.createElement('li')
+              commentContainer.innerText = commentItem.body
+              commentsContainer.append(commentContainer)
+
+          }
+      })
+
+
+</script>
+</body>
+</html>
